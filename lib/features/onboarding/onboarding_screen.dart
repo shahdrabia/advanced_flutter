@@ -1,10 +1,47 @@
+import 'package:advanced/core/theaming/styles.dart';
+import 'package:advanced/features/onboarding/widgets/doc_logo_and_name.dart';
+import 'package:advanced/features/onboarding/widgets/doctor_image_and_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'widgets/getstarted_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Onboarding Screen')));
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: 30.h,
+              bottom: 30.h, //for some responsiveness
+            ),
+            child: Column(
+              children: [
+                const DocLogoAndName(),
+                SizedBox(height: 30.h),
+                const DoctorImageAndText(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Book an appointment with the best doctors\n in your city",
+                        style: TextStyles.font13Grey500regural,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 30.h),
+                      const GetstartedButton(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
